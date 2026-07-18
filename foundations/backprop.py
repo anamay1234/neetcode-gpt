@@ -66,7 +66,6 @@ class Solution:
         # This combines the effect of the loss
         # and the sigmoid activation.
         dL_dz = dL_dŷ * dŷ_dz
-        dL_dz = dL_dŷ * dŷ_dz
 
         # Step 6:
         # Calculate weight gradients:
