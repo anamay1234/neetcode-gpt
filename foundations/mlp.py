@@ -17,10 +17,10 @@ class Solution:
         
         for i in range(1, len(weights)):
             z = np.dot(a, weights[i]) + biases[i]
-            a = np.maximum(0, z)
+            if (i < len(weights) - 1):
+                a = np.maximum(0, z)
 
-        return a
-
+        return z
 
          
 
