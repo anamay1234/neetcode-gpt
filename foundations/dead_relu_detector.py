@@ -14,14 +14,15 @@ class Solution:
         dead_fractions = []
         out = x
 
-        for layer in model:
-            out = layer(out)
+        with torch.no_grad():
+            for layer in model:
+                out = layer(out)
 
-            if isinstance(layer, nn.ReLU):
-                dead = (out == 0).all(dim=0)
-                dead_fraction = dead.float().mean().item()
+                if isinstance(layer, nn.ReLU):
+                    dead = (out == 0).all(dim=0)
+                    dead_fraction = dead.float().mean().item()
 
-                dead_fractions.append(round(dead_fraction, 4))
+                    dead_fractions.append(round(dead_fraction, 4))
 
         return dead_fractions
 
